@@ -1,0 +1,3 @@
+# Angular + NodeJS + PostgreSQL + Sequelize
+
+This project combines the power of Angular, NodeJS, PostgreSQL, and Sequelize to create a robust and scalable web application. Angular is used for the frontend development, providing a dynamic and interactive user interface. NodeJS serves as the backend, handling server-side logic and API integrations. PostgreSQL is the chosen database management system, offering reliability and data integrity. Sequelize is an ORM (Object-Relational Mapping) tool that simplifies database operations and enhances productivity. Together, these technologies form a comprehensive stack for building modern web applications.
