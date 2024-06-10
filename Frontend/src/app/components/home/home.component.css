@@ -1,0 +1,255 @@
+.container-home{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.fotografia{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.fotografia-item{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+
+.data-fotografia{
+    position: absolute;
+    left: 80px;
+    bottom: 120px;
+    right: 0px;
+    color: white;
+    z-index: 3;
+    font-size: 40px;
+    font-family: "Roboto-Regular";
+    max-width: 500px;
+}
+
+.leer-mas{
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-leer-mas{
+    width: 34px;
+    height: 34px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    cursor: pointer;
+}
+
+.btn-leer-mas mat-icon{
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    margin: auto;
+}
+
+.leer-mas mat-icon:hover{
+    transition: all 0.3s linear;
+    transform: scale(1.1);
+    color: rgba(140, 0, 0, 0.833);
+}
+
+.txt-leer-mas{
+    font-family: "Roboto-ThinItalic";   
+    margin: auto 15px;
+    color: white;
+}
+
+.linea-inferior{
+    margin: auto auto auto 0px;
+    height: 1px;
+    position: absolute;
+    left: 120px;
+    top: 18px;
+    right: 100px;
+    background: white;
+}
+
+.login{
+    position: absolute;
+    right: 60px;
+    top: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    font-family: "Roboto-Regular";
+}
+
+.login:hover{
+    transform: scale(1.1);
+}
+
+.content-flechas-nav{
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    display: flex;
+}
+
+.content-flechas-nav mat-icon{
+    font-size: 60px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.content-flechas-nav div{
+    color: rgb(255, 255, 255);
+    transition: all 0.2s linear;
+    position: absolute;
+    outline: none;
+}
+
+.content-flechas-nav div:hover{
+    color: rgba(140, 0, 0, 0.833);
+}
+
+.move-left{
+    left: 10px;
+}
+
+.move-right{
+    right: 10px;
+}
+
+.ver-mas {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ver-mas-detalle {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    font-family: "Roboto-Thin";
+    color: #fff;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%; 
+    text-align: center;
+}
+
+.ver-mas-nombre {
+    font-size: 3em; 
+    margin-bottom: 10px; 
+}
+
+.ver-mas-descripcion {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.ver-mas-autor {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.compartir {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.compartir div {
+    margin: 5px;
+}
+
+.compartir img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.compartir img:hover {
+    transform: scale(1.2);
+}
+
+
+.show-thumbs{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 6;
+    color: white;
+    background: #333;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.show-thumbs mat-icon{
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+.content-thumbs{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    overflow-y: scroll;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 5;
+    transition: all 0.3s linear;
+}
+
+.numero-fotografia{
+    color: #fff;
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.numero-fotografia div{
+    font-family: "Roboto-Bold";
+    font-size: 100px;
+    margin: auto;
+}
+
+.thumb{
+    height: 220px;
+    display: block;
+    padding: 0px;
+    overflow: hidden;
+    cursor: pointer;
+    color: #fff;
+}

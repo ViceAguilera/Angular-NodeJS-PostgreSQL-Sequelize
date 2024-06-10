@@ -1,0 +1,89 @@
+.item-fotografia{
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.item-fotografia-seleccionada{
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.item-fotografia-hover{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: linear-gradient(rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%);
+    transition: all 0.3s linear;
+}
+
+.detalle-fotografia{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 60px;
+    background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(29,29,29,0.8) 100%);
+    color: white;
+    padding: 20px 10px 10px 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.linea{
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    width: 40px;
+    height: 1px;
+    background: #999;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.numero{
+    font-family: "Roboto-Regular";
+    font-size: 20px;
+    margin: auto 0px;
+}
+
+.autor{
+    margin: auto auto auto 15px;
+    font-family: "Roboto-Regular";
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: auto;
+    opacity: 0;
+    transition: all 0.5s linear;
+}
+
+.item-fotografia:hover .item-fotografia-hover{
+    opacity: 0;
+}
+
+.item-fotografia:hover .linea{
+    width: 50%;
+    left: 30px;
+    background: #fff;
+}
+
+.item-fotografia:hover .autor{
+    opacity: 1;
+}

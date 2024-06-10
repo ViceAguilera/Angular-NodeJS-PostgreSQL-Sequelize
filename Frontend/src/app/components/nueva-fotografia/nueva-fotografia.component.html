@@ -1,0 +1,49 @@
+<div class="content container">
+    <h2>Agregar una nueva fotografia</h2>
+    <form #nuevaFotoForm="ngForm" (ngSubmit)="agregar()" class="row">
+        <div class="col-xs-12 col-md-6 mb-3">
+            <mat-form-field class="w-100">
+                <input matInput type="text" #nombre="ngModel" name="nombre" [(ngModel)]="fotografia.fotografia" required 
+                placeholder="Fotografía" autoFocus>
+                <mat-error *ngIf="nombre.invalid">El nombre de la fotografía es requerido.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-md-6 mb-3">
+            <mat-form-field class="w-100">
+                <input matInput type="text" #descripcion="ngModel" name="descripcion" [(ngModel)]="fotografia.descripcion" required 
+                placeholder="Descripción">
+            </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-md-6 mb-3">
+            <mat-form-field class="w-100">
+                <input matInput type="text" #autor="ngModel" name="autor" [(ngModel)]="fotografia.autor" required 
+                placeholder="Autor">
+                <mat-error *ngIf="autor.invalid">El autor de la fotografía es requerido.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-md-6 mb-3">
+            <mat-form-field class="w-100">
+                <input matInput type="number" #numero="ngModel" name="numero" [(ngModel)]="fotografia.numero" required 
+                placeholder="Número">
+                <mat-error *ngIf="numero.invalid">El número de la fotografía es requerido.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-md-6 mb-3 d-flex align-items-center">
+            <mat-form-field class="w-100">
+                <input matInput type="text" disabled>
+                <input #file type="file" style="display: none;" (change)="fileChangeEvent($event)">
+                <div>{{image_selected}}</div>
+                <button mat-mini-fab color="primary" matSuffix type="button" (click)="file.click()">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-md-6 mb-3">
+            <mat-checkbox class="w-100" [(ngModel)]="fotografia.activo" color="primary" name="activo">Activo</mat-checkbox>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+            <button [routerLink]="['/admin/list']" mat-raised-button class="btn me-2" color="default" type="button">Cancelar</button>
+            <button [disabled]="nuevaFotoForm.form.invalid" mat-raised-button class="btn" color="primary" type="submit">Agregar</button>
+        </div>
+    </form>
+</div>

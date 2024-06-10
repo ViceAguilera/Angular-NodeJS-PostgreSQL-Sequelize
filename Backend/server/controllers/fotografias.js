@@ -86,7 +86,7 @@ function getFotografia(req, res){
     var fotografia = req.params.fotografia;
     var thumb = req.params.thumb;
 
-    if(thumb == 'true'){
+    if(thumb == 'false'){
         var path_foto = './server/uploads/fotografias/' + fotografia;
     }else{
         var path_foto = './server/uploads/fotografias/thumbs/' + fotografia;
@@ -132,6 +132,16 @@ function getAllAdmin(req, res){
     })
 }
 
+function getById(req, res){
+    var id = req.params.id;
+    fotografia.findByPk(id)
+    .then(fotografia => {
+        res.status(200).send({fotografia})
+    })
+    .catch(err => {
+        res.status(500).send({message: 'Ocurrió un error al buscar una fotografía.'})
+    })
+}
 
 module.exports = {
     create,
@@ -139,5 +149,6 @@ module.exports = {
     uploadFotografia,
     getFotografia,
     getAll,
-    getAllAdmin
+    getAllAdmin,
+    getById
 }

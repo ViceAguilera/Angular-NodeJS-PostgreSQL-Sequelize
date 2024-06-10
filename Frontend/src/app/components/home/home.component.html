@@ -1,0 +1,59 @@
+<div class="container-home">
+    <div class="fotografia" *ngFor="let fotografia of fotografias">
+        <div class="fotografia-item" 
+        [@mover-fotografias]="direccion"
+        *ngIf="fotografia_selected.fotografia.numero == fotografia.numero"
+        [style.background-image]="'url(' + url + 'get-fotografia/' + fotografia.imagen + '/false)'">
+            <div class="data-fotografia" *ngIf="!ver_mas">
+                {{fotografia.fotografia}}
+            </div>
+            <div class="leer-mas">
+                <div class="btn-leer-mas" (click)="ver_mas=!ver_mas">
+                    <mat-icon>add</mat-icon>
+                </div>
+                <div class="txt-leer-mas">Leer más</div>
+                <div class="linea-inferior"></div>
+                <div class="login" [routerLink]="['/login']">Login</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-flechas-nav">
+    <div class="move-left" *ngIf="fotografia_selected.anterior" [routerLink]="['/home',fotografia_selected.anterior]">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </div>
+    <div class="move-right" *ngIf="fotografia_selected.siguiente" [routerLink]="['/home',fotografia_selected.siguiente]">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </div>
+</div>
+
+<div class="ver-mas" *ngIf="ver_mas" (click)="ver_mas=!ver_mas">
+    <div class="ver-mas-detalle col-lg-6 col-md-6 col-xs-10">
+        <div class="ver-mas-nombre">{{fotografia_selected.fotografia.fotografia}}</div>
+        <div class="ver-mas-descripcion">{{fotografia_selected.fotografia.descripcion}}</div>
+        <div class="ver-mas-autor">{{fotografia_selected.fotografia.autor}}</div>
+        <div class="compartir">
+            <div class="twitter">
+                <img src="/assets/x.png" alt="twitter">
+            </div>
+            <div class="instagram">
+                <img src="/assets/ig.png" alt="instagram">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="show-thumbs" (click)="show_thumbs=!show_thumbs">
+    <mat-icon *ngIf="!show_thumbs">menu</mat-icon>
+    <mat-icon *ngIf="show_thumbs">close</mat-icon>
+</div>
+
+<div class="content-thumbs" *ngIf="show_thumbs" [@show-thumbs]>
+    <div class="numero-fotografia col-lg-3 col-md-4 col-sm-6 flex">
+        <div>{{fotografia_selected.fotografia.numero}}</div>
+    </div>
+    <div class="thumb col-lg-3 col-md-4 col-sm-6" *ngFor="let fotografia of fotografias">
+        <app-fotografia [fotografia]="fotografia" [seleccionada]="fotografia_selected.fotografia"></app-fotografia>
+    </div>
+</div>
