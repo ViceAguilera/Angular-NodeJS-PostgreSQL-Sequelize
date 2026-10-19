@@ -5,12 +5,32 @@ Aplicación web full stack para publicar y administrar una galería de fotograf�
 ![Angular](https://img.shields.io/badge/Angular-18-DD0031?style=flat&logo=angular&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=nodedotjs&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Sequelize-4169E1?style=flat&logo=postgresql&logoColor=white)
-![Licencia](https://img.shields.io/badge/licencia-MIT-green?style=flat)
+![Estado](https://img.shields.io/badge/estado-ejercicio%20académico-lightgrey?style=flat)
+![Licencia](https://img.shields.io/badge/licencia-MIT-blue?style=flat)
 ![Último commit](https://img.shields.io/github/last-commit/ViceAguilera/Angular-NodeJS-PostgreSQL-Sequelize?style=flat)
+
+<p align="center"><img src="docs/screenshot.png" alt="Captura de la pantalla de login de la galería (solo frontend)" width="800"></p>
+
+## Tabla de contenidos
+
+- [Descripción](#descripción)
+- [Estado del proyecto](#estado-del-proyecto)
+- [Características](#características)
+- [Tecnologías](#tecnologías)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Licencia](#licencia)
+- [Autor](#autor)
 
 ## Descripción
 
 Proyecto que combina Angular en el frontend con una API Express que persiste datos en PostgreSQL mediante el ORM Sequelize. La galería es pública, y un panel de administración protegido por login permite crear, editar y subir imágenes de fotografías.
+
+## Estado del proyecto
+
+**Ejercicio académico.** Proyecto de práctica que combina Angular, Express y Sequelize; no recibe desarrollo activo.
 
 ## Características
 
