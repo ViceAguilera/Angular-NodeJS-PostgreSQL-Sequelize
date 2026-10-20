@@ -49,7 +49,7 @@ Proyecto que combina Angular en el frontend con una API Express que persiste dat
 ## Requisitos
 
 - Node.js y npm
-- PostgreSQL con una base de datos llamada `galeria-fotografias` (nombre configurado en `Backend/server/config/config.json`)
+- PostgreSQL con una base de datos llamada `galeria-fotografias` (configurable con `DB_NAME`)
 
 ## Instalación
 
@@ -61,9 +61,23 @@ cd Backend && npm install
 cd ../Frontend && npm install
 ```
 
-Configura las credenciales de PostgreSQL y el `token_secret` en `Backend/server/config/config.json` (sección `development`). El proyecto no incluye migraciones ni `sync()`, por lo que las tablas `usuarios` y `fotografias` deben existir según los modelos de `Backend/server/models/`.
+### Configuración
 
-> **Aviso:** el `config.json` versionado contiene valores de desarrollo de ejemplo. No los reutilices en ningún entorno real.
+Copia `Backend/.env.example` a `Backend/.env` y completa las variables:
+
+```
+PORT=8010
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_NAME=galeria-fotografias
+DB_USER=postgres
+DB_PASSWORD=      # Contraseña de PostgreSQL
+TOKEN_SECRET=     # Obligatorio: secreto para firmar los JWT
+```
+
+Genera un `TOKEN_SECRET` largo y aleatorio con `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`. Sin él, el backend no arranca. La lectura de estas variables está en `Backend/server/config/config.js`.
+
+El proyecto no incluye migraciones ni `sync()`, por lo que las tablas `usuarios` y `fotografias` deben existir según los modelos de `Backend/server/models/`.
 
 ## Uso
 
@@ -90,7 +104,7 @@ Backend/
   app.js               # Express, CORS y registro de rutas
   server/
     auth/              # Middleware de autenticación JWT
-    config/            # Configuración de base de datos
+    config/config.js   # Configuración de base de datos y JWT desde variables de entorno
     controllers/       # Lógica de usuarios y fotografías
     models/            # Modelos Sequelize
     routes/            # Rutas /api/...
