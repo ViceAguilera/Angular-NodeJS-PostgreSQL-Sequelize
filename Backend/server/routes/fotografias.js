@@ -1,7 +1,22 @@
 const fotografiaController = require('../controllers').fotografias;
 const md_auth = require('../auth/auth');
-const cm = require('connect-multiparty');
-const md_upload = cm({uploadDir: './server/uploads/fotografias'});
+const multer = require('multer');
+const path = require('path');
+const crypto = require('crypto');
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: './server/uploads/fotografias',
+        filename: (req, file, cb) => {
+            cb(null, crypto.randomBytes(18).toString('base64url') + path.extname(file.originalname).toLowerCase());
+        }
+    }),
+    fileFilter: (req, file, cb) => {
+        const ext = path.extname(file.originalname).toLowerCase();
+        cb(null, ['.png', '.jpg', '.jpeg'].includes(ext));
+    }
+});
+const md_upload = upload.single('foto');
 
 module.exports = (app) => {
     app.post('/api/fotografia', md_auth.auth, fotografiaController.create);

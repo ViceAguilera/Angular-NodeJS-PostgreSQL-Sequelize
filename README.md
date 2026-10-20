@@ -36,14 +36,14 @@ Proyecto que combina Angular en el frontend con una API Express que persiste dat
 
 - Galería pública paginada (`/home/:num`).
 - Login con JWT (`njwt`) y rutas de administración protegidas por guard (`/admin/list`, `/admin/new`, `/admin/edit/:id`).
-- CRUD de fotografías con subida de imagen y generación de miniaturas (`node-thumbnail`).
+- CRUD de fotografías con subida de imagen y generación de miniaturas (`sharp`).
 - Modelos Sequelize `usuarios` y `fotografias`.
 - Frontend con Angular Material, Bootstrap y soporte SSR.
 
 ## Tecnologías
 
 - Frontend: Angular 18, Angular Material, Bootstrap 5, RxJS, TypeScript 5.4
-- Backend: Node.js, Express 4, Sequelize 6, `pg`, `njwt`, `connect-multiparty`
+- Backend: Node.js, Express 4, Sequelize 6, `pg`, `njwt`, `multer`
 - Base de datos: PostgreSQL
 
 ## Requisitos
