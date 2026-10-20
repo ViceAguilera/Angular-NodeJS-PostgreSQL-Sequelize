@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FotografiasService } from '../../services/fotografias.service';
 import { AuthService } from '../../services/auth.service';
 import { GLOBAL } from '../../services/global';
@@ -9,6 +9,7 @@ import { Animations } from '../../animations/animations';
     templateUrl: './list.component.html',
     styleUrl: './list.component.css',
     animations: [Animations],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ListComponent implements OnInit{

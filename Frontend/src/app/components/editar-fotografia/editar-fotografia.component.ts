@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FotografiasService } from '../../services/fotografias.service'
 import { AuthService } from '../../services/auth.service';
@@ -9,6 +9,7 @@ import { GLOBAL } from '../../services/global';
     selector: 'app-editar-fotografia',
     templateUrl: './editar-fotografia.component.html',
     styleUrl: './editar-fotografia.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditarFotografiaComponent implements OnInit {

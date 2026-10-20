@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FotografiasService } from '../../services/fotografias.service';
 import { response } from 'express';
 import { GLOBAL } from '../../services/global';
@@ -10,6 +10,7 @@ import { Animations } from '../../animations/animations';
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
     animations: [Animations],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 
