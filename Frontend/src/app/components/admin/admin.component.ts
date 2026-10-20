@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { Animations } from '../../animations/animations';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css',
-  animations: [ Animations ] 
-
+    selector: 'app-admin',
+    templateUrl: './admin.component.html',
+    styleUrl: './admin.component.css',
+    animations: [Animations],
+    standalone: false
 })
 export class AdminComponent implements OnInit {
   public identity: any;

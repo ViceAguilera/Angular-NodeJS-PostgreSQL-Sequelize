@@ -6,9 +6,10 @@ import { UploadService } from '../../services/upload.service';
 import { GLOBAL } from '../../services/global';
 
 @Component({
-  selector: 'app-nueva-fotografia',
-  templateUrl: './nueva-fotografia.component.html',
-  styleUrl: './nueva-fotografia.component.css'
+    selector: 'app-nueva-fotografia',
+    templateUrl: './nueva-fotografia.component.html',
+    styleUrl: './nueva-fotografia.component.css',
+    standalone: false
 })
 export class NuevaFotografiaComponent implements OnInit{
   public fotografia: any={};

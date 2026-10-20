@@ -6,9 +6,10 @@ import { UploadService } from '../../services/upload.service';
 import { GLOBAL } from '../../services/global';
 
 @Component({
-  selector: 'app-editar-fotografia',
-  templateUrl: './editar-fotografia.component.html',
-  styleUrl: './editar-fotografia.component.css'
+    selector: 'app-editar-fotografia',
+    templateUrl: './editar-fotografia.component.html',
+    styleUrl: './editar-fotografia.component.css',
+    standalone: false
 })
 export class EditarFotografiaComponent implements OnInit {
   public fotografia:any={};

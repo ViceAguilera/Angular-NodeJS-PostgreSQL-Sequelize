@@ -5,10 +5,11 @@ import { GLOBAL } from '../../services/global';
 import { Animations } from '../../animations/animations';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
-  animations: [ Animations ] 
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.css',
+    animations: [Animations],
+    standalone: false
 })
 export class ListComponent implements OnInit{
   public token;

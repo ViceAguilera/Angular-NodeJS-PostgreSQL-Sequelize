@@ -6,10 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Animations } from '../../animations/animations';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  animations: [ Animations ] 
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    animations: [Animations],
+    standalone: false
 })
 
 export class HomeComponent implements OnInit{
