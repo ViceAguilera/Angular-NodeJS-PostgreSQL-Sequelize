@@ -2,7 +2,7 @@
 
 Aplicación web full stack para publicar y administrar una galería de fotografías, con API REST en Node.js y frontend en Angular.
 
-![Angular](https://img.shields.io/badge/Angular-18-DD0031?style=flat&logo=angular&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-22-DD0031?style=flat&logo=angular&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=nodedotjs&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Sequelize-4169E1?style=flat&logo=postgresql&logoColor=white)
 ![Estado](https://img.shields.io/badge/estado-ejercicio%20académico-lightgrey?style=flat)
@@ -42,7 +42,7 @@ Proyecto que combina Angular en el frontend con una API Express que persiste dat
 
 ## Tecnologías
 
-- Frontend: Angular 18, Angular Material, Bootstrap 5, RxJS, TypeScript 5.4
+- Frontend: Angular 22, Angular Material, Bootstrap 5, RxJS, TypeScript 6.0
 - Backend: Node.js, Express 4, Sequelize 6, `pg`, `njwt`, `multer`
 - Base de datos: PostgreSQL
 
