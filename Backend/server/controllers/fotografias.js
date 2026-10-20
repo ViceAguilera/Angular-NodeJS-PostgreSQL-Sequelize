@@ -1,6 +1,6 @@
 const fotografia = require('../models').fotografias;
 const fs = require('fs');
-const thumb = require('node-thumbnail').thumb;
+const sharp = require('sharp');
 const path = require('path');
 
 function create(req, res){
@@ -35,51 +35,35 @@ function update(req, res){
 
 function uploadFotografia(req, res){
     var id = req.params.id;
-    if(req.files){
-        var file_path = req.files.foto.path;
-        var file_split = file_path.split('\\');
-        var file_name = file_split[3];
-        var ext_split = file_name.split('\.');
-        var file_ext = ext_split[1];
-        if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg'){
-            var foto = {}
-            foto.imagen = file_name;
-            fotografia.findByPk(id)
-            .then(fotografia => {
-                fotografia.update(foto)
-                .then(() => {
-                    var newPath = './server/uploads/fotografias/' + file_name;
-                    var thumbPath = './server/uploads/fotografias/thumbs/';
+    if(!req.file){
+        return res.status(400).send({message: 'Debe seleccionar una imagen válida (png, jpg, jpeg).'})
+    }
+    var file_path = req.file.path;
+    var file_name = req.file.filename;
+    var foto = {imagen: file_name};
 
-                    thumb({
-                        source: path.resolve(newPath),
-                        destination: path.resolve(thumbPath),
-                        width: 200,
-                        suffix: ''
-                    })
-                    .then(() => {
-                        res.status(200).send({fotografia})
-                    })
-                    .catch(err => {
-                        res.status(500).send({message: 'Ocurrió un error al crear el thumbnail.' + err.message})
-                    })
-                })
-                .catch(err => {
-                    res.status(500).send({message: 'Ocurrió un error al actualizar la fotografía.' + err.message})
-                })
+    fotografia.findByPk(id)
+    .then(fotografia => {
+        fotografia.update(foto)
+        .then(() => {
+            var thumbPath = './server/uploads/fotografias/thumbs/';
+            fs.promises.mkdir(thumbPath, {recursive: true})
+            .then(() => sharp(file_path).resize({width: 200}).toFile(path.join(thumbPath, file_name)))
+            .then(() => {
+                res.status(200).send({fotografia})
             })
             .catch(err => {
-                fs.unlink(file_path, (err) => {
-                    if(err){
-                        res.status(500).send({message: 'Ocurrió un error al eliminar la fotografía.' + err.message})
-                    }}
-                )
-                res.status(500).send({message: 'La extensión no es válida.' + err.message})
+                res.status(500).send({message: 'Ocurrió un error al crear el thumbnail.' + err.message})
             })
-        }
-    }else{
-        res.status(400).send({message: 'Debe seleccionar una imagen.'})
-    }
+        })
+        .catch(err => {
+            res.status(500).send({message: 'Ocurrió un error al actualizar la fotografía.' + err.message})
+        })
+    })
+    .catch(err => {
+        fs.unlink(file_path, () => {})
+        res.status(500).send({message: 'Ocurrió un error al buscar la fotografía.' + err.message})
+    })
 }
 
 function getFotografia(req, res){

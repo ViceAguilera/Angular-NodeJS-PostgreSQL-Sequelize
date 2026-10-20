@@ -1,5 +1,5 @@
 var nJwt = require('njwt');
-var config = require('../config/config.json');
+var config = require('../config/config.js');
 var secret = config.token_secret;
 
 exports.createToken = (usuario) => {

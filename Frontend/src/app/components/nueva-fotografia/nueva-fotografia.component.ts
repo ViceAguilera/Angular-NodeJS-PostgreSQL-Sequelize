@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FotografiasService } from '../../services/fotografias.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -6,9 +6,11 @@ import { UploadService } from '../../services/upload.service';
 import { GLOBAL } from '../../services/global';
 
 @Component({
-  selector: 'app-nueva-fotografia',
-  templateUrl: './nueva-fotografia.component.html',
-  styleUrl: './nueva-fotografia.component.css'
+    selector: 'app-nueva-fotografia',
+    templateUrl: './nueva-fotografia.component.html',
+    styleUrl: './nueva-fotografia.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NuevaFotografiaComponent implements OnInit{
   public fotografia: any={};

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FotografiasService } from '../../services/fotografias.service';
 import { response } from 'express';
 import { GLOBAL } from '../../services/global';
@@ -6,10 +6,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Animations } from '../../animations/animations';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  animations: [ Animations ] 
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    animations: [Animations],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 
 export class HomeComponent implements OnInit{

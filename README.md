@@ -2,7 +2,7 @@
 
 Aplicación web full stack para publicar y administrar una galería de fotografías, con API REST en Node.js y frontend en Angular.
 
-![Angular](https://img.shields.io/badge/Angular-18-DD0031?style=flat&logo=angular&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-22-DD0031?style=flat&logo=angular&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=nodedotjs&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Sequelize-4169E1?style=flat&logo=postgresql&logoColor=white)
 ![Estado](https://img.shields.io/badge/estado-ejercicio%20académico-lightgrey?style=flat)
@@ -36,20 +36,20 @@ Proyecto que combina Angular en el frontend con una API Express que persiste dat
 
 - Galería pública paginada (`/home/:num`).
 - Login con JWT (`njwt`) y rutas de administración protegidas por guard (`/admin/list`, `/admin/new`, `/admin/edit/:id`).
-- CRUD de fotografías con subida de imagen y generación de miniaturas (`node-thumbnail`).
+- CRUD de fotografías con subida de imagen y generación de miniaturas (`sharp`).
 - Modelos Sequelize `usuarios` y `fotografias`.
 - Frontend con Angular Material, Bootstrap y soporte SSR.
 
 ## Tecnologías
 
-- Frontend: Angular 18, Angular Material, Bootstrap 5, RxJS, TypeScript 5.4
-- Backend: Node.js, Express 4, Sequelize 6, `pg`, `njwt`, `connect-multiparty`
+- Frontend: Angular 22, Angular Material, Bootstrap 5, RxJS, TypeScript 6.0
+- Backend: Node.js, Express 4, Sequelize 6, `pg`, `njwt`, `multer`
 - Base de datos: PostgreSQL
 
 ## Requisitos
 
-- Node.js y npm
-- PostgreSQL con una base de datos llamada `galeria-fotografias` (nombre configurado en `Backend/server/config/config.json`)
+- Node.js 22.22.3+, 24.15+ o 26+ (lo exige Angular 22) y npm
+- PostgreSQL con una base de datos llamada `galeria-fotografias` (configurable con `DB_NAME`)
 
 ## Instalación
 
@@ -61,9 +61,23 @@ cd Backend && npm install
 cd ../Frontend && npm install
 ```
 
-Configura las credenciales de PostgreSQL y el `token_secret` en `Backend/server/config/config.json` (sección `development`). El proyecto no incluye migraciones ni `sync()`, por lo que las tablas `usuarios` y `fotografias` deben existir según los modelos de `Backend/server/models/`.
+### Configuración
 
-> **Aviso:** el `config.json` versionado contiene valores de desarrollo de ejemplo. No los reutilices en ningún entorno real.
+Copia `Backend/.env.example` a `Backend/.env` y completa las variables:
+
+```
+PORT=8010
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_NAME=galeria-fotografias
+DB_USER=postgres
+DB_PASSWORD=      # Contraseña de PostgreSQL
+TOKEN_SECRET=     # Obligatorio: secreto para firmar los JWT
+```
+
+Genera un `TOKEN_SECRET` largo y aleatorio con `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`. Sin él, el backend no arranca. La lectura de estas variables está en `Backend/server/config/config.js`.
+
+El proyecto no incluye migraciones ni `sync()`, por lo que las tablas `usuarios` y `fotografias` deben existir según los modelos de `Backend/server/models/`.
 
 ## Uso
 
@@ -90,7 +104,7 @@ Backend/
   app.js               # Express, CORS y registro de rutas
   server/
     auth/              # Middleware de autenticación JWT
-    config/            # Configuración de base de datos
+    config/config.js   # Configuración de base de datos y JWT desde variables de entorno
     controllers/       # Lógica de usuarios y fotografías
     models/            # Modelos Sequelize
     routes/            # Rutas /api/...

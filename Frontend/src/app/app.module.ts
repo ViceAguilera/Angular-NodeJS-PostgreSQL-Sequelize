@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration,  } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { BrowserModule, provideClientHydration, withNoIncrementalHydration } from '@angular/platform-browser';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,8 +54,8 @@ const modules2 = [
     ...modules2
   ],
   providers: [
-    provideClientHydration(),
-    provideHttpClient(),
+    provideClientHydration(withNoIncrementalHydration()),
+    provideHttpClient(withXhr()),
     provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
