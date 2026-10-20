@@ -48,7 +48,7 @@ Proyecto que combina Angular en el frontend con una API Express que persiste dat
 
 ## Requisitos
 
-- Node.js y npm
+- Node.js 22.22.3+, 24.15+ o 26+ (lo exige Angular 22) y npm
 - PostgreSQL con una base de datos llamada `galeria-fotografias` (configurable con `DB_NAME`)
 
 ## Instalación
